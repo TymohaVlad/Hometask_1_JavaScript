@@ -1,6 +1,7 @@
 import { notesData } from './data.js';
 import { renderNotesTable } from './notes.js';
+import { initAddButton } from './addNotes.js'
 
-// Вызываем функции для отображения таблицы заметок и обновления сводной таблицы
+initAddButton()
 renderNotesTable(notesData);
 

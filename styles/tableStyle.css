@@ -1,0 +1,19 @@
+table{
+    margin: auto;
+}
+tr{
+    text-align: center;
+}
+td{
+padding: 8px;
+}
+.table__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#addForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

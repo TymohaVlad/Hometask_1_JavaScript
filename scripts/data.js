@@ -5,7 +5,7 @@ export const notesData = [
       createTime: '2023-07-24 10:00',
       content: 'Сходить в магазин',
       category: 'Задача',
-      dates: ['2023-07-28']
+      dates: []
     },
     {
       id: 2,
@@ -35,22 +35,6 @@ export const notesData = [
         id: 5,
         name: 'Books',
         createTime: '2023-07-27 15:00',
-        content: 'Идея для проекта',
-        category: 'Идея',
-        dates: []
-      },
-      {
-        id: 6,
-        name: 'Notes name',
-        createTime: '2023-07-28 15:00',
-        content: 'Идея для проекта',
-        category: 'Идея',
-        dates: []
-      },
-      {
-        id: 7,
-        name: 'Notes name',
-        createTime: '2023-07-28 15:00',
         content: 'Идея для проекта',
         category: 'Идея',
         dates: []

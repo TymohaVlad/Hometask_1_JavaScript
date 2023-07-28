@@ -1,6 +1,12 @@
+import { notesData } from './data.js';
+import { handleEditNoteClick, handleSaveChangesClick } from './edit.js';
+
 function formatDate(dateString) {
-  const options = { year: 'numeric', month: 'long', day: 'numeric' };
-  return new Date(dateString).toLocaleDateString('en-US', options);
+  const dateObj = new Date(dateString);
+  const day = dateObj.getDate();
+  const month = dateObj.getMonth() + 1; 
+  const year = dateObj.getFullYear();
+  return `${day}/${month}/${year}`;
 }
 
 export function renderNotesTable(notes) {
@@ -33,9 +39,35 @@ export function renderNotesTable(notes) {
     row.appendChild(contentCell);
 
     const datesCell = document.createElement('td');
-    datesCell.textContent = note.dates.join(', ');
+    datesCell.textContent = note.dates
+      .map((date) => formatDate(date))
+      .join(' , ');
     row.appendChild(datesCell);
 
+    const actionCell = document.createElement('td');
+    const editButton = document.createElement('button');
+    editButton.textContent = 'Edit';
+    editButton.setAttribute('data-id', note.id);
+    editButton.addEventListener('click', () => handleEditNoteClick(note.id));
+    actionCell.appendChild(editButton);
+
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.addEventListener('click', () =>
+      handleDeleteNoteClick(note.id)
+    );
+    actionCell.appendChild(deleteButton);
+
+    row.appendChild(actionCell);
     tableBody.appendChild(row);
   });
+}
+
+function handleDeleteNoteClick(noteId) {
+  const noteIndexToDelete = notesData.findIndex((note) => note.id === noteId);
+
+  if (noteIndexToDelete !== -1) {
+    notesData.splice(noteIndexToDelete, 1);
+    renderNotesTable(notesData);
+  }
 }

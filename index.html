@@ -3,27 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/index.css" />
     <title>My notes</title>
   </head>
   <body>
-    <h1>My notes</h1>
+    <main class="main">
+      <div class="table__container">
+        <h1>My notes</h1>
+        <table id="notesTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Created</th>
+              <th>Category</th>
+              <th>Content</th>
+              <th>Dates</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div id="addFormContainer"></div>
+        <button id="addButton">Add New</button>
+      </div>
+      <div id="editFormContainer"></div>
+    </main>
 
-    <table id="notesTable">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Created</th>
-          <th>Category</th>
-          <th>Content</th>
-          <th>Dates</th>
-        </tr>
-      </thead>
-      <tbody>
-
-      </tbody>
-    </table>
-
-    
     <script type="module" src="scripts/app.js"></script>
   </body>
 </html>
