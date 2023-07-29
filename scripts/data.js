@@ -15,7 +15,7 @@ export const notesData = [
       content: 'some content',
       category: 'Idea',
       dates: [],
-      archived: false,
+      archived: true,
     },
     {
         id: 3,

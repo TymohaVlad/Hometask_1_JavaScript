@@ -1,6 +1,8 @@
 import { notesData } from './data.js';
 import { handleEditNoteClick,  } from './edit.js';
 import {handleArchiveNoteClick} from './archived.js'
+import {handleUnarchiveNoteClick} from './archived.js'
+
 
 function formatDate(dateString) {
   const dateObj = new Date(dateString);
@@ -11,8 +13,9 @@ function formatDate(dateString) {
 }
 
 export function renderNotesTable(notes) {
+  console.log('Rendering notes table');
+  console.log(notes);
   const tableBody = document.querySelector('#notesTable tbody');
-  const addButton = document.getElementById('addButton');
 
  
 
@@ -49,6 +52,7 @@ export function renderNotesTable(notes) {
     row.appendChild(datesCell);
 
     const actionCell = document.createElement('td');
+    actionCell.classList.add('buttons__column')
     const editButton = document.createElement('button');
     editButton.textContent = 'Edit';
     editButton.setAttribute('data-id', note.id);
@@ -57,13 +61,13 @@ export function renderNotesTable(notes) {
 
     const archiveButton = document.createElement('button');
     archiveButton.textContent = 'Archive';
-    archiveButton.addEventListener('click', () => handleArchiveNoteClick(note.id));
+    archiveButton.addEventListener('click', () => handleArchiveNoteClick(note.id)); 
     actionCell.appendChild(archiveButton);
 
     if (note.archived) {
       const unarchiveButton = document.createElement('button');
       unarchiveButton.textContent = 'Unarchive';
-      unarchiveButton.addEventListener('click', () => handleUnarchiveNoteClick(note.id));
+      unarchiveButton.addEventListener('click', () => handleUnarchiveNoteClick(note.id)); 
       actionCell.appendChild(unarchiveButton);
     }
 
@@ -76,7 +80,6 @@ export function renderNotesTable(notes) {
 
     row.appendChild(actionCell);
     tableBody.appendChild(row);
-
     
   });
 }
@@ -89,4 +92,5 @@ function handleDeleteNoteClick(noteId) {
     notesData.splice(noteIndexToDelete, 1);
     renderNotesTable(notesData);
   }
+ 
 }
