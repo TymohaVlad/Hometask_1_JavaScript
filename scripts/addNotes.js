@@ -7,7 +7,7 @@ const addButton = document.getElementById('addButton');
 addButton.addEventListener('click', showAddForm);
 
 function showAddForm() {
-  addButton.style.display = 'none';
+    addButton.style.display = 'none';
   addFormContainer.innerHTML = `
     <form id="addForm">
       <label for="name">Name:</label>
@@ -18,8 +18,10 @@ function showAddForm() {
       <input type="text" id="category" required><br>
       <label for="dates">Dates:</label>
       <input type="date" id="dates" required><br>
+      <div class="form__buttons">
       <button type="submit">Add Task</button>
       <button type="button" id="cancelButton">Cancel</button>
+      </div>
     </form>
   `;
 
@@ -36,9 +38,7 @@ function handleAddNoteSubmit(event) {
   const name = event.target.elements.name.value;
   const content = event.target.elements.content.value;
   const category = event.target.elements.category.value;
-  const dates = event.target.elements.dates.value
-    .split(',')
-    .map((date) => date.trim());
+  const dates = event.target.elements.dates.value.split(',').map(date => date.trim());
 
   const id = `note_${Date.now()}`;
 
@@ -59,10 +59,10 @@ function handleAddNoteSubmit(event) {
 }
 
 function cancelAddForm() {
-  addFormContainer.innerHTML = '';
+  addFormContainer.innerHTML = ''; 
   addButton.style.display = 'block';
 }
 
 export function initAddButton() {
-  addButton.textContent = 'Add New';
+  addButton.textContent = 'Add Note';
 }

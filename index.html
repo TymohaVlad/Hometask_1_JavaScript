@@ -8,24 +8,38 @@
   </head>
   <body>
     <main class="main">
-      <div class="table__container">
-        <h1>My notes</h1>
-        <table id="notesTable">
+        <h1 class="title">My notes</h1>
+      <div class="table__elements">
+        <div class="table__contsiner">
+            <table id="notesTable">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Created</th>
+                    <th>Category</th>
+                    <th>Content</th>
+                    <th>Dates</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+        </div>
+        <div id="addFormContainer"></div>
+        <button id="addButton">Add New</button>
+        <div id="editFormContainer"></div>
+      </div>
+      <div id="summary__table-container">
+        <table id="summaryTable">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Created</th>
-              <th>Category</th>
-              <th>Content</th>
-              <th>Dates</th>
+              <th>Note Category</th>
+              <th>Active</th>
+              <th>Archived</th>
             </tr>
           </thead>
           <tbody></tbody>
         </table>
-        <div id="addFormContainer"></div>
-        <button id="addButton">Add New</button>
       </div>
-      <div id="editFormContainer"></div>
     </main>
 
     <script type="module" src="scripts/app.js"></script>

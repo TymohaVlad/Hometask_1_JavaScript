@@ -1,5 +1,6 @@
 import { notesData } from './data.js';
-import { handleEditNoteClick, handleSaveChangesClick } from './edit.js';
+import { handleEditNoteClick,  } from './edit.js';
+import {handleArchiveNoteClick} from './archived.js'
 
 function formatDate(dateString) {
   const dateObj = new Date(dateString);
@@ -11,6 +12,9 @@ function formatDate(dateString) {
 
 export function renderNotesTable(notes) {
   const tableBody = document.querySelector('#notesTable tbody');
+  const addButton = document.getElementById('addButton');
+
+ 
 
   tableBody.innerHTML = '';
 
@@ -51,6 +55,18 @@ export function renderNotesTable(notes) {
     editButton.addEventListener('click', () => handleEditNoteClick(note.id));
     actionCell.appendChild(editButton);
 
+    const archiveButton = document.createElement('button');
+    archiveButton.textContent = 'Archive';
+    archiveButton.addEventListener('click', () => handleArchiveNoteClick(note.id));
+    actionCell.appendChild(archiveButton);
+
+    if (note.archived) {
+      const unarchiveButton = document.createElement('button');
+      unarchiveButton.textContent = 'Unarchive';
+      unarchiveButton.addEventListener('click', () => handleUnarchiveNoteClick(note.id));
+      actionCell.appendChild(unarchiveButton);
+    }
+
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete';
     deleteButton.addEventListener('click', () =>
@@ -60,8 +76,11 @@ export function renderNotesTable(notes) {
 
     row.appendChild(actionCell);
     tableBody.appendChild(row);
+
+    
   });
 }
+
 
 function handleDeleteNoteClick(noteId) {
   const noteIndexToDelete = notesData.findIndex((note) => note.id === noteId);

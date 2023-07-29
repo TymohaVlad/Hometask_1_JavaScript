@@ -2,10 +2,11 @@ import { notesData } from './data.js';
 import { renderNotesTable } from './notes.js';
 
 const editFormContainer = document.getElementById('editFormContainer');
+const addButton = document.getElementById('addButton');
 
 export function handleEditNoteClick(noteId) {
   const noteToEdit = notesData.find((note) => note.id === noteId);
-
+ 
   editFormContainer.innerHTML = `
     <label for="editCategory">Category:</label>
     <input type="text" id="editCategory" value="${noteToEdit.category}"><br>
@@ -18,6 +19,8 @@ export function handleEditNoteClick(noteId) {
 
   const saveButton = editFormContainer.querySelector('.save-button');
   saveButton.addEventListener('click', () => handleSaveChangesClick(noteId));
+  
+  addButton.style.display = 'none';
 }
 
 export function handleSaveChangesClick(noteId) {
@@ -26,6 +29,7 @@ export function handleSaveChangesClick(noteId) {
   const editDates = document.querySelector('#editDate').value;  
 
   const noteToEdit = notesData.find((note) => note.id === noteId);
+  addButton.style.display = 'block';
 
   if (editedContent.trim() !== '') {
     noteToEdit.content = editedContent.trim();
@@ -35,4 +39,5 @@ export function handleSaveChangesClick(noteId) {
 
     renderNotesTable(notesData);
   }
+  
 }
