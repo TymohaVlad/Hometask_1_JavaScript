@@ -1,1 +1,3 @@
-@import './tableStyle.css'
+@import url('./tableStyle.css');
+@import url('./addNewModal.css');
+@import url('./editModal.css');

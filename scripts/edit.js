@@ -8,6 +8,7 @@ export function handleEditNoteClick(noteId) {
   const noteToEdit = notesData.find((note) => note.id === noteId);
  
   editFormContainer.innerHTML = `
+  <form id="editForm">
     <label for="editCategory">Category:</label>
     <input type="text" id="editCategory" value="${noteToEdit.category}"><br>
     <label for="editContent">Content:</label>
@@ -15,6 +16,7 @@ export function handleEditNoteClick(noteId) {
     <label for="editDates">Dates:</label>
     <input type="date" id="editDate" value="${noteToEdit.dates}"><br>
     <button class="save-button" data-id="${noteId}">Save Changes</button>
+    </form>
   `;
 
   const saveButton = editFormContainer.querySelector('.save-button');

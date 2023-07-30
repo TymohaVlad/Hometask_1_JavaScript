@@ -1,36 +1,88 @@
 table{
     margin: auto;
 }
+th{
+    color: #fff;
+    background: lightslategray;
+}
 tr{
     text-align: center;
+    border: solid 1px #0a0a0a;
+}
+tr:hover{
+    background: #ccd7f5;
+    transition: 0.3s;
 }
 td{
 padding: 8px;
+border-right: solid 1px #ccc;
+border-bottom: solid 1px #ccc;
 }
-.table__elements{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+button{
+    cursor: pointer;
+}
+input{
+    height: 30px;
+    font-size: 16px;
+}
+label{
+    font-weight: bold;
+    font-size: 16px;
+    color: #fff;
+    margin: 0 auto 2% ;
+}
+#notesTable{
+    width: 100%;
+    border: solid 1px #ccc;
+    padding: 15px;
+    box-shadow: 0px -1px 7px 0px rgba(158, 157, 157, 0.75);
+    background: #eeebeb;
 }
 #editFormContainer{
-    display: flex;
-    position: fixed;
-    flex-direction: column;
-    align-items: center;
-    right: 8%;
-    top: 29%;
+   margin-top: 2%;
 }
 #addButton{
-    position: absolute;
-    display: block;
-    right: 16%;
-    top: 18%;
+    float: right;
+    margin-right: 6%;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    width: 100px;
+    height: 30px;
+    background-color: lightblue;
+    border: none;
+    font-weight: bold;
 }
 #addForm{
     display: flex;
+    flex-wrap: nowrap;
     flex-direction: column;
-    align-items: center;
+    max-width: 30%;
+    align-items: stretch;
+    margin: 10% auto;
 }
-.buttons__column{
-    width: 30%;
+#addTaskBtn, #cancelButton{
+    width: 40%;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    
+}
+.form__buttons{
+    display: flex;
+    gap: 2%;
+    justify-content: center;
+}
+.setings{
+    margin-left: 1%;
+}
+.buttons__container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+#summary__table-container{
+    margin-top: 3%;
+}
+#summaryTable{
+    width: 100%;
+    background: #eeebeb;
 }

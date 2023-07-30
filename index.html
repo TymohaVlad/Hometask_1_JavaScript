@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>My notes</title>
   </head>
   <body>
@@ -24,9 +25,17 @@
                 <tbody></tbody>
               </table>
         </div>
-        <div id="addFormContainer"></div>
-        <button id="addButton">Add New</button>
-        <div id="editFormContainer"></div>
+        <div id="addNewModal" class="modal">
+          <div id="addFormContainer" class="modal__content">
+          <span class="close">&times;</span>
+          </div>
+        </div>
+        <button id="addButton"></button>
+        <div id="editModal" class="edit__modal">
+          <div id="editFormContainer" class="edit__modal-content">
+            <span class="close-edit">&times;</span>
+          </div>
+        </div>
       </div>
       <div id="summary__table-container">
         <table id="summaryTable">
