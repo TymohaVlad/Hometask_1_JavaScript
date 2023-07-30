@@ -1,9 +1,9 @@
 import { notesData } from './data.js';
+import { handleUnarchiveNoteClick } from './archived.js';
 
 export function updateSummaryTable() {
   const tableBody = document.querySelector('#summaryTable tbody');
-
-  const categoryCounts = {}; 
+  const categoryCounts = {};
 
   for (const note of notesData) {
     const category = note.category;
@@ -26,9 +26,22 @@ export function updateSummaryTable() {
       <td>${category}</td>
       <td>${active}</td>
       <td>${archived}</td>
+      <td></td>
     `;
+
+    if (archived > 0) {
+      const unarchiveButton = document.createElement('button');
+      unarchiveButton.classList.add('fa', 'fa-upload', 'setings');
+      unarchiveButton.addEventListener('click', () => {
+        // Изменение в следующей строке:
+        const noteId = notesData.find((note) => note.category === category && note.archived).id;
+        handleUnarchiveNoteClick(noteId); 
+      });
+
+      const lastCell = row.querySelector('td:last-child');
+      lastCell.appendChild(unarchiveButton);
+    }
+
     tableBody.appendChild(row);
   }
 }
-
-
