@@ -52,7 +52,7 @@ export function renderNotesTable(notes) {
     actionCell.classList.add('buttons__column')
     const editButton = document.createElement('button');
     editButton.textContent = '';
-    editButton.classList.add('fa', 'fa-close')
+    editButton.classList.add('fa', 'fa-pen-to-square')
     editButton.setAttribute('data-id', note.id);
     editButton.addEventListener('click', () => handleEditNoteClick(note.id));
     actionCell.appendChild(editButton);
