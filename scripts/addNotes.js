@@ -14,10 +14,10 @@ function showAddForm() {
     <form id="addForm">
       <label for="name">Name:</label>
       <input type="text" id="name" required><br>
-      <label for="content">Content:</label>
-      <input type="text" id="content" required><br>
       <label for="category">Category:</label>
       <input type="text" id="category" required><br>
+      <label for="content">Content:</label>
+      <input type="text" id="content" required><br>
       <label for="dates">Dates:</label>
       <input type="date" id="dates" required><br>
       <div class="form__buttons">

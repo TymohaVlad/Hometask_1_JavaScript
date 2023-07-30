@@ -1,4 +1,5 @@
 import { notesData } from './data.js';
+import { closeEditModal } from './modalEditNote.js';
 import { renderNotesTable } from './notes.js';
 
 const editFormContainer = document.getElementById('editFormContainer');
@@ -15,12 +16,15 @@ export function handleEditNoteClick(noteId) {
     <input type="text" id="editContent" value="${noteToEdit.content}"><br>
     <label for="editDates">Dates:</label>
     <input type="date" id="editDate" value="${noteToEdit.dates}"><br>
+    <div class="edit__btn-container">
     <button class="save-button" data-id="${noteId}">Save Changes</button>
+    <button class="close-button">Close</button>
+    </div>
     </form>
   `;
 
   const saveButton = editFormContainer.querySelector('.save-button');
-  saveButton.addEventListener('click', () => handleSaveChangesClick(noteId));
+  saveButton.addEventListener('click', () => {handleSaveChangesClick(noteId),closeEditModal() });
   
   addButton.style.display = 'none';
 }

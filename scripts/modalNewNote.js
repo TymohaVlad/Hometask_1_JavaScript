@@ -1,7 +1,6 @@
 const addNewModal = document.getElementById("addNewModal");
 const btnOpenNew = document.getElementById("addButton");
 
-
  function openModal() {
   addNewModal.style.display = "block";
 }

@@ -28,8 +28,11 @@ input{
 label{
     font-weight: bold;
     font-size: 16px;
-    color: #fff;
+    color: #000000;
     margin: 0 auto 2% ;
+    background-color: #fff;
+    padding: 3px;
+    border-radius: 4px;
 }
 #notesTable{
     width: 100%;
@@ -85,4 +88,21 @@ label{
 #summaryTable{
     width: 100%;
     background: #eeebeb;
+}
+#editForm{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: 10% auto;
+}
+.save-button,.close-button{
+    width: 40%;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    margin: auto;
+}
+.edit__btn-container{
+    display: flex;
+    
 }

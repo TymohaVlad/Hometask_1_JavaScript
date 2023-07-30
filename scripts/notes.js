@@ -2,6 +2,8 @@ import { notesData } from './data.js';
 import { handleEditNoteClick } from './edit.js';
 import { handleArchiveNoteClick } from './archived.js';
 import { handleUnarchiveNoteClick } from './archived.js';
+import { openEditModal } from './modalEditNote.js';
+
 
 function formatDate(dateString) {
   const dateObj = new Date(dateString);
@@ -50,11 +52,15 @@ export function renderNotesTable(notes) {
 
     const actionCell = document.createElement('td');
     actionCell.classList.add('buttons__column')
+
     const editButton = document.createElement('button');
-    editButton.textContent = '';
-    editButton.classList.add('fa', 'fa-pen-to-square')
+    editButton.id = 'editBtn';
+    editButton.classList.add('fa', 'fa-pen-to-square');
     editButton.setAttribute('data-id', note.id);
-    editButton.addEventListener('click', () => handleEditNoteClick(note.id));
+    editButton.addEventListener('click', () => {
+      handleEditNoteClick(note.id);
+      openEditModal();
+    });
     actionCell.appendChild(editButton);
 
     const archiveButton = document.createElement('button');
