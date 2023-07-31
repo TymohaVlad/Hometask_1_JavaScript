@@ -3,7 +3,6 @@ import { handleEditNoteClick } from './edit.js';
 import { handleArchiveNoteClick } from './archived.js';
 import { openEditModal } from './modalEditNote.js';
 
-
 function formatDate(dateString) {
   const dateObj = new Date(dateString);
   const day = dateObj.getDate();
@@ -66,7 +65,7 @@ export function renderNotesTable(notes) {
       archiveButton.classList.add('fa', 'fa-archive', 'setings');
       archiveButton.addEventListener('click', () => {
         handleArchiveNoteClick(note.id);
-        row.remove(); 
+        row.remove();
       });
       actionCell.appendChild(archiveButton);
 
@@ -75,16 +74,27 @@ export function renderNotesTable(notes) {
       deleteButton.classList.add('fa', 'fa-trash', 'setings');
       deleteButton.addEventListener('click', () => {
         handleDeleteNoteClick(note.id);
-        row.remove(); 
+        row.remove();
       });
       actionCell.appendChild(deleteButton);
 
       row.appendChild(actionCell);
       tableBody.appendChild(row);
-    }
-  
-  });
 
+      const deleteAllButton = document.getElementById('deleteAll');
+      deleteAllButton.addEventListener('click', handleDeleteAll);
+
+      function handleDeleteAll() {
+        notesData.forEach((note) => {
+          if (!note.archived) {
+            handleDeleteNoteClick(note.id);
+          }
+        });
+        renderNotesTable(notesData);
+        updateSummaryTable();
+      }
+    }
+  });
 }
 export function handleDeleteNoteClick(noteId) {
   const noteIndexToDelete = notesData.findIndex((note) => note.id === noteId);

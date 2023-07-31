@@ -55,7 +55,7 @@ function handleAddNoteSubmit(event) {
     dates,
   };
 
-  notesData.push(newNote);
+  notesData = [...notesData, newNote]
 
   renderNotesTable(notesData);
   updateSummaryTable(notesData);

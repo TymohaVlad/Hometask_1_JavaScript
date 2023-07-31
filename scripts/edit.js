@@ -36,7 +36,6 @@ export function handleEditNoteClick(noteId) {
  
 }
 
-
 export function handleSaveChangesClick(noteId) {
   const editedContent = document.querySelector('#editContent').value;
   const editedCategory = document.querySelector('#editCategory').value;
@@ -48,7 +47,7 @@ export function handleSaveChangesClick(noteId) {
   if (editedContent.trim() !== '') {
     noteToEdit.content = editedContent.trim();
     noteToEdit.category = editedCategory;
-    noteToEdit.dates.push(editDates);
+    noteToEdit.dates = [...noteToEdit.dates, editDates]
     editFormContainer.innerHTML = '';
 
     renderNotesTable(notesData);
