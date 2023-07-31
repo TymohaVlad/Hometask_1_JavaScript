@@ -66,7 +66,7 @@ export function renderNotesTable(notes) {
       archiveButton.classList.add('fa', 'fa-archive', 'setings');
       archiveButton.addEventListener('click', () => {
         handleArchiveNoteClick(note.id);
-        row.remove(); // Удаляем строку с задачей из таблицы после архивации
+        row.remove(); 
       });
       actionCell.appendChild(archiveButton);
 

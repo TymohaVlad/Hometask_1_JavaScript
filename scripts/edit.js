@@ -3,7 +3,6 @@ import { closeEditModal } from './modalEditNote.js';
 import { renderNotesTable } from './notes.js';
 
 const editFormContainer = document.getElementById('editFormContainer');
-const addButton = document.getElementById('addButton');
 
 export function handleEditNoteClick(noteId) {
   const noteToEdit = notesData.find((note) => note.id === noteId);
@@ -34,7 +33,7 @@ export function handleEditNoteClick(noteId) {
   closeEditButton.addEventListener('click', () => {
     closeEditModal(); 
   })
-  addButton.style.display = 'none';
+ 
 }
 
 
@@ -44,7 +43,7 @@ export function handleSaveChangesClick(noteId) {
   const editDates = document.querySelector('#editDate').value;  
 
   const noteToEdit = notesData.find((note) => note.id === noteId);
-  addButton.style.display = 'block';
+
 
   if (editedContent.trim() !== '') {
     noteToEdit.content = editedContent.trim();
