@@ -5,7 +5,6 @@ import { updateSummaryTable } from './summary.js';
 import { openModal, closeModal } from './modalNewNote.js';
 import { closeEditModal } from './modalEditNote.js';
 
-
 renderNotesTable(notesData);
 initAddButton();
 updateSummaryTable();
