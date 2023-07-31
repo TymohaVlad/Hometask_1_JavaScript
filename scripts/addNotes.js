@@ -40,7 +40,7 @@ function handleAddNoteSubmit(event) {
   const name = event.target.elements.name.value;
   const content = event.target.elements.content.value;
   const category = event.target.elements.category.value;
-  const dates = findDatesInContent(content); // Ищем даты в содержимом текстовой области
+  const dates = findDatesInContent(content); 
 
   const id = `note_${Date.now()}`;
 
@@ -81,19 +81,20 @@ export function findDatesInContent(text) {
   const matches = text.match(dateRegex);
 
   if (matches) {
-    const uniqueDates = new Set(); 
+    const uniqueDates = new Set();
 
     matches.forEach((date) => {
-      const [day, month, year] = date.split('/');
-      const formattedDate = `${day}/${month}/${year}`;
-      uniqueDates.add(formattedDate); // Добавляем дату в Set
+      const [day,  month,  year] = date.split('/');
+      const formattedDate = `${month}/${day}/${year}`;
+      uniqueDates.add(formattedDate);
     });
 
-    return Array.from(uniqueDates); 
+    return Array.from(uniqueDates);
   } else {
     return [];
   }
 }
+
 
 
 

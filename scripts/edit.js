@@ -7,7 +7,7 @@ const editFormContainer = document.getElementById('editFormContainer');
 
 export function handleEditNoteClick(noteId) {
   const noteToEdit = notesData.find((note) => note.id === noteId);
-  const datesInContent = findDatesInContent(noteToEdit.content); // Находим даты в тексте
+  const datesInContent = findDatesInContent(noteToEdit.content); 
 
   editFormContainer.innerHTML = `
     <form id="editForm">
@@ -35,10 +35,6 @@ export function handleEditNoteClick(noteId) {
     closeEditModal();
   });
 
-  // Отобразить даты из текста в столбце "Dates"
-  const datesElement = document.createElement('div');
-  datesElement.textContent = datesInContent.join(', ');
-  editFormContainer.appendChild(datesElement);
 }
 
 export function handleSaveChangesClick(noteId) {
@@ -50,7 +46,7 @@ export function handleSaveChangesClick(noteId) {
   if (editedContent.trim() !== '') {
     noteToEdit.content = editedContent.trim();
     noteToEdit.category = editedCategory;
-    noteToEdit.dates = findDatesInContent(editedContent); // Обновляем список дат из контента
+    noteToEdit.dates = findDatesInContent(editedContent); 
     editFormContainer.innerHTML = '';
 
     renderNotesTable(notesData);
