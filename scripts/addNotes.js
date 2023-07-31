@@ -15,14 +15,14 @@ function showAddForm() {
       <label for="name">Name:</label>
       <input type="text" id="name" required><br>
       <label for="category">Category:</label>
-      <input type="text" id="category" required><br>
+      <select id="category" required>
+        ${createCategoryOptions()}
+      </select><br>
       <label for="content">Content:</label>
-      <input type="text" id="content" required><br>
-      <label for="dates">Dates:</label>
-      <input type="date" id="dates" required><br>
+      <textarea id="content" required></textarea><br>
       <div class="form__buttons">
-      <button type="submit" id="addTaskBtn">Add Task</button>
-      <button type="button" id="cancelButton">Cancel</button>
+        <button type="submit" id="addTaskBtn">Add Task</button>
+        <button type="button" id="cancelButton">Cancel</button>
       </div>
     </form>
   `;
@@ -40,9 +40,7 @@ function handleAddNoteSubmit(event) {
   const name = event.target.elements.name.value;
   const content = event.target.elements.content.value;
   const category = event.target.elements.category.value;
-  const dates = event.target.elements.dates.value
-    .split(',')
-    .map((date) => date.trim());
+  const dates = findDatesInContent(content); // Ищем даты в содержимом текстовой области
 
   const id = `note_${Date.now()}`;
 
@@ -71,3 +69,31 @@ function cancelAddForm() {
 export function initAddButton() {
   addButton.textContent = 'Add Note';
 }
+
+function createCategoryOptions() {
+  return notesData
+    .map((note) => `<option value="${note.category}">${note.category}</option>`)
+    .join('');
+}
+
+export function findDatesInContent(text) {
+  const dateRegex = /\d{1,2}\/\d{1,2}\/\d{4}/g;
+  const matches = text.match(dateRegex);
+
+  if (matches) {
+    const uniqueDates = new Set(); 
+
+    matches.forEach((date) => {
+      const [day, month, year] = date.split('/');
+      const formattedDate = `${day}/${month}/${year}`;
+      uniqueDates.add(formattedDate); // Добавляем дату в Set
+    });
+
+    return Array.from(uniqueDates); 
+  } else {
+    return [];
+  }
+}
+
+
+
