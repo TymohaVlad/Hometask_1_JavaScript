@@ -18,16 +18,25 @@ export function handleEditNoteClick(noteId) {
     <input type="date" id="editDate" value="${noteToEdit.dates}"><br>
     <div class="edit__btn-container">
     <button class="save-button" data-id="${noteId}">Save Changes</button>
-    <button class="close-button">Close</button>
+    <button type="button" class="close-button">Close</button>
     </div>
     </form>
   `;
 
   const saveButton = editFormContainer.querySelector('.save-button');
-  saveButton.addEventListener('click', () => {handleSaveChangesClick(noteId),closeEditModal() });
-  
+  saveButton.addEventListener('click', () => {
+    handleSaveChangesClick(noteId),
+    closeEditModal(); 
+  });
+
+
+  const closeEditButton = editFormContainer.querySelector('.close-button');
+  closeEditButton.addEventListener('click', () => {
+    closeEditModal(); 
+  })
   addButton.style.display = 'none';
 }
+
 
 export function handleSaveChangesClick(noteId) {
   const editedContent = document.querySelector('#editContent').value;

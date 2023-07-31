@@ -33,7 +33,6 @@ export function updateSummaryTable() {
       const unarchiveButton = document.createElement('button');
       unarchiveButton.classList.add('fa', 'fa-upload', 'setings');
       unarchiveButton.addEventListener('click', () => {
-        // Изменение в следующей строке:
         const noteId = notesData.find((note) => note.category === category && note.archived).id;
         handleUnarchiveNoteClick(noteId); 
       });
