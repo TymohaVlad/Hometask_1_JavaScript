@@ -40,7 +40,7 @@ function handleAddNoteSubmit(event) {
   const name = event.target.elements.name.value;
   const content = event.target.elements.content.value;
   const category = event.target.elements.category.value;
-  const dates = findDatesInContent(content); 
+  const dates = findDatesInContent(content);
 
   const id = `note_${Date.now()}`;
 
@@ -81,20 +81,7 @@ export function findDatesInContent(text) {
   const matches = text.match(dateRegex);
 
   if (matches) {
-    const uniqueDates = new Set();
-
-    matches.forEach((date) => {
-      const [day,  month,  year] = date.split('/');
-      const formattedDate = `${month}/${day}/${year}`;
-      uniqueDates.add(formattedDate);
-    });
-
-    return Array.from(uniqueDates);
-  } else {
-    return [];
+    return [...new Set(matches)];
   }
+  return [];
 }
-
-
-
-

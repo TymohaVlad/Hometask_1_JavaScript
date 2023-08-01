@@ -3,13 +3,7 @@ import { handleEditNoteClick } from './edit.js';
 import { handleArchiveNoteClick } from './archived.js';
 import { openEditModal } from './modalEditNote.js';
 
-function formatDate(dateString) {
-  const dateObj = new Date(dateString);
-  const day = dateObj.getDate();
-  const month = dateObj.getMonth() + 1;
-  const year = dateObj.getFullYear();
-  return `${day}/${month}/${year}`;
-}
+
 
 export function renderNotesTable(notes) {
   const tableBody = document.querySelector('#notesTable tbody');
@@ -42,9 +36,8 @@ export function renderNotesTable(notes) {
       row.appendChild(contentCell);
 
       const datesCell = document.createElement('td');
-      datesCell.textContent = note.dates
-        .map((date) => formatDate(date))
-        .join(' , ');
+      datesCell.textContent = note.dates.join(', ')
+        
       row.appendChild(datesCell);
 
       const actionCell = document.createElement('td');
